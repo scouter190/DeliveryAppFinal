@@ -3,6 +3,7 @@ package com.cesitar.deliveryapp_project
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -47,12 +48,9 @@ fun HomeScreen(
     pedidoRepository: PedidoRepository,
     pedidoDetalleRepository: PedidoDetalleRepository
 ) {
-
-    var listaPedidos by remember { mutableStateOf< List<Pedido>>(emptyList()) }
-
+    var pedidosModel = mutableListOf<PedidoModel>()
     LaunchedEffect(true) {
-        listaPedidos = pedidoRepository.listarPedidos();
-        var pedidosModel = mutableListOf<PedidoModel>()
+        var listaPedidos = pedidoRepository.listarPedidos();
         for (pedido in listaPedidos) {
             var pedidoDetallesModel = mutableListOf<PedidoDetalleModel>()
             var pedidoDetalles =
@@ -70,30 +68,6 @@ fun HomeScreen(
             pedidosModel.add(pedidoModel);
         }
     }
-        val pedidos = listOf(
-            mapOf(
-                "codigo" to "P001",
-                "estado" to "Pendiente",
-                "fecha" to "24/06/2025",
-                "cliente" to "Cesar Flores",
-                "direccion" to "Av. Siempre Viva 123",
-                "detalle" to listOf(
-                    mapOf("articulo" to "Arroz", "cantidad" to 2, "precio" to 10),
-                    mapOf("articulo" to "Papa", "cantidad" to 3, "precio" to 5)
-                )
-            ),
-            mapOf(
-                "codigo" to "P002",
-                "estado" to "Entregado",
-                "fecha" to "25/06/2025",
-                "cliente" to "María Pérez",
-                "direccion" to "Calle Falsa 456",
-                "detalle" to listOf(
-                    mapOf("articulo" to "Aceite", "cantidad" to 1, "precio" to 20)
-                )
-            )
-        )
-
         Scaffold(
             topBar = {
                 TopAppBar(
@@ -111,33 +85,37 @@ fun HomeScreen(
                 )
             }
         ) { padding ->
-            LazyColumn(
-                modifier = Modifier
-                    .padding(padding)
-                    .padding(8.dp)
-            ) {
-                items(pedidos) { pedido ->
-                    Card(
-                        modifier = Modifier.fillMaxWidth(),
-                        elevation = CardDefaults.cardElevation(4.dp)
-                    ) {
-                        Column(modifier = Modifier.padding(8.dp)) {
-                            Text("Pedido: ${pedido["codigo"]}", style = MaterialTheme.typography.titleMedium)
-                            Text("Estado: ${pedido["estado"]}")
-                            Text("Fecha: ${pedido["fecha"]}")
-                            Text("Cliente: ${pedido["cliente"]}")
-                            Text("Dirección: ${pedido["direccion"]}")
-                            Spacer(modifier = Modifier.height(4.dp))
-                            Text("Detalle:")
-                            (pedido["detalle"] as List<Map<String,Any>>).forEach { detalle ->
-                                Text("- ${detalle["articulo"]} x${detalle["cantidad"]} (S/.${detalle["precio"]})")
-                            }
-                        }
-                    }
-                    Spacer(modifier = Modifier.height(8.dp))
-                }
-            }
+            ScreenContent(padding, pedidosModel)
         }
     }
 
 
+@Composable
+fun ScreenContent(padding: PaddingValues, pedidosModel: List<PedidoModel>) {
+    LazyColumn(
+        modifier = Modifier
+            .padding(padding)
+            .padding(8.dp)
+    ) {
+        items(pedidosModel) { pedido ->
+            Card(
+                modifier = Modifier.fillMaxWidth(),
+                elevation = CardDefaults.cardElevation(4.dp)
+            ) {
+                Column(modifier = Modifier.padding(8.dp)) {
+                    Text("Pedido: ${pedido.numero_pedido}", style = MaterialTheme.typography.titleMedium)
+                    Text("Estado: ${pedido.estado}")
+                    Text("Fecha: ${pedido.fecha_entrega}")
+                    Text("Cliente: ${pedido.documento}")
+                    Text("Dirección: ${pedido.direccion_tienda}")
+                    Spacer(modifier = Modifier.height(4.dp))
+                    Text("Detalle:")
+                    pedido.pedidoDetalle.forEach { detalle ->
+                        Text("- ${detalle.articulo?.nombre} x${detalle.cantidad} (S/.${detalle.articulo?.precio})")
+                    }
+                }
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+        }
+    }
+}
