@@ -26,38 +26,80 @@ class DatabaseUtil(
         val id_usuario1 = usuarioRepository.insertarUsuario(
             Usuario(
                 nombre_completo = "Cesar Flores Avila",
-                usuario = "cesarfa",
-                contraseña = "123"
+                usuario = "73115930",
+                contraseña = "73115930"
             )
         )
         val id_usuario2 = usuarioRepository.insertarUsuario(
             Usuario(
-                nombre_completo = "Cristina Flores Avila",
-                usuario = "cristinaafa",
-                contraseña = "123"
+                nombre_completo = "Celso Avila",
+                usuario = "18005619",
+                contraseña = "18005619"
             )
         )
         val id_usuario3 = usuarioRepository.insertarUsuario(
             Usuario(
                 nombre_completo = "Luis Andrade",
                 usuario = "luisan",
-                contraseña = "123"
+                contraseña = ""
             )
         )
         val id_usuario4 = usuarioRepository.insertarUsuario(
             Usuario(
                 nombre_completo = "Diana Torres",
                 usuario = "dianat",
-                contraseña = "123"
+                contraseña = ""
             )
         )
         val id_usuario5 = usuarioRepository.insertarUsuario(
             Usuario(
                 nombre_completo = "Rosa Sánchez",
                 usuario = "rosas",
-                contraseña = "123"
+                contraseña = ""
             )
         )
+
+        val id_usuario6 = usuarioRepository.insertarUsuario(
+            Usuario(
+                nombre_completo = "Kevin Ramos Luján",
+                usuario = "kevinr",
+                contraseña = ""
+            )
+        )
+
+        val id_usuario7 = usuarioRepository.insertarUsuario(
+            Usuario(
+                nombre_completo = "Andrea Castillo Torres",
+                usuario = "andreac",
+                contraseña = ""
+            )
+        )
+
+        val id_usuario8 = usuarioRepository.insertarUsuario(
+            Usuario(
+                nombre_completo = "Carlos Peña Ruiz",
+                usuario = "carlosp",
+                contraseña = ""
+            )
+        )
+
+        val id_usuario9 = usuarioRepository.insertarUsuario(
+            Usuario(
+                nombre_completo = "Melanie Suárez Díaz",
+                usuario = "melaniesd",
+                contraseña = ""
+            )
+        )
+
+        val id_usuario10 = usuarioRepository.insertarUsuario(
+            Usuario(
+                nombre_completo = "Jorge Meza Guevara",
+                usuario = "jorgemg",
+                contraseña = ""
+            )
+        )
+
+
 
         // Artículos (nombre, stock, precio)
         val id_articulo1 = articuloRepository.insertarArticulo(
@@ -101,7 +143,7 @@ class DatabaseUtil(
             Pedido(
                 estado = "Pendiente",
                 numero_pedido = "#123456789",
-                id_usuario = id_usuario1,
+                id_usuario = id_usuario6,
                 documento = "BOL-0101",
                 numero_guia = "GUIA-0101",
                 direccion_tienda = "Av. Lima 123",
@@ -115,7 +157,7 @@ class DatabaseUtil(
             Pedido(
                 estado = "Entregado",
                 numero_pedido = "#98754654",
-                id_usuario = id_usuario2,
+                id_usuario = id_usuario7,
                 documento = "BOL-0102",
                 numero_guia = "GUIA-0102",
                 direccion_tienda = "Av. Arequipa 456",
@@ -129,7 +171,7 @@ class DatabaseUtil(
             Pedido(
                 estado = "No entregado",
                 numero_pedido = "#5465465",
-                id_usuario = id_usuario3,
+                id_usuario = id_usuario4,
                 documento = "BOL-0103",
                 numero_guia = "GUIA-0103",
                 direccion_tienda = "Av. Brasil 789",
@@ -143,7 +185,7 @@ class DatabaseUtil(
             Pedido(
                 estado = "Entregado Parcial",
                 numero_pedido = "#33445566",
-                id_usuario = id_usuario4,
+                id_usuario = id_usuario9,
                 documento = "BOL-0104",
                 numero_guia = "GUIA-0104",
                 direccion_tienda = "Av. Salaverry 159",

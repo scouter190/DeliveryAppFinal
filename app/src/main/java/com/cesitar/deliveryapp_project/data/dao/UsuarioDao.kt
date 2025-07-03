@@ -20,4 +20,8 @@ interface UsuarioDao {
 
   @Query("DELETE FROM Usuario")
   suspend fun eliminarTodoUsuario()
+
+  @Query("SELECT * FROM usuario WHERE usuario = :usuario AND contraseña = :contraseña LIMIT 1")
+  suspend fun validar(usuario: String, contraseña: String): Usuario?
+
 }

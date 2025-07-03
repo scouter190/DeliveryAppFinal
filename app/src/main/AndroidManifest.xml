@@ -38,18 +38,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
-            android:exported="true"
-            android:label="deliveryApp_project"
-            android:theme="@style/Theme.DeliveryApp_project">
-        </activity>
-        <activity
             android:name=".DrawerActivity"
             android:exported="true"
             android:label="deliveryApp_project"
             android:theme="@style/Theme.DeliveryApp_project">
         </activity>
-
 
     </application>
 

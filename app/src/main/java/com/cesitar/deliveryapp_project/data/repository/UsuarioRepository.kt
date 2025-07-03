@@ -19,4 +19,11 @@ class UsuarioRepository(private val usuarioDao: UsuarioDao) {
     suspend fun eliminarTodoUsuario(){
         usuarioDao.eliminarTodoUsuario()
     }
+
+    suspend fun validarCredenciales(usuario: String, contraseña: String): Usuario? {
+        return usuarioDao.validar(usuario, contraseña)
+    }
+
+
+
 }

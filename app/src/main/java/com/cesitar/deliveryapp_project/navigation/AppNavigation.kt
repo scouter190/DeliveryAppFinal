@@ -43,7 +43,8 @@ fun AppNavigation(
             SplashScreen(navController)
         }
         composable(AppScreens.LoginScreen.route) {
-            LoginScreen(navController)
+            LoginScreen(navController,
+                usuarioRepository = usuarioRepository)
         }
         composable(AppScreens.HomeScreen.route) {
             DrawerScreen(
