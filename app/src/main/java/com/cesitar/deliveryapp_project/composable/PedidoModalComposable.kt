@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AddCircle
-import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
@@ -47,11 +46,11 @@ import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EstadoPedidoDialog(
+fun PedidoModalComposable(
     pedidoRepository: PedidoRepository,
     pedidoModel: PedidoModel,
     onDismiss: () -> Unit,
-    onGrabar: (String) -> Unit
+    onGrabar: suspend (String) -> Unit
 ) {
     val opciones = listOf("--Seleccione--", "Entregado", "Entregado Parcial", "No Entregado")
     var estadoSeleccionado  = remember { mutableStateOf(opciones[0]) }
@@ -168,13 +167,13 @@ fun EstadoPedidoDialog(
                             coroutineScope.launch {
                                 var currentPedidod = pedidoRepository.obtenerPedidoPorId(pedidoModel.id_pedido.toLong());
                                 if(currentPedidod != null){
-                                    currentPedidod.photo = base64Image.value;
+                                    currentPedidod.foto = base64Image.value;
                                     currentPedidod.estado = estadoSeleccionado.value;
                                     pedidoRepository.updatePedido(currentPedidod);
                                     onGrabar(estadoSeleccionado.value)
                                 }
                             }
-                          },
+                        },
                         modifier = Modifier.weight(1f)
                     ) {
                         Text("Grabar")

@@ -24,7 +24,7 @@ import androidx.room.Relation
 data class Pedido(
     @PrimaryKey(autoGenerate = true)
     val id_pedido: Int = 0,
-    val estado: String = "pendiente",
+    var estado: String = "pendiente",
     val numero_pedido: String,
     val direccion_tienda: String,
     val id_usuario: Long,
@@ -32,4 +32,6 @@ data class Pedido(
     val comentario: String?,
     val fecha_entrega: String?,
     val documento: String?,
+    var foto: String?,
+    var firma: String?
 )

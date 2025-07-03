@@ -37,16 +37,19 @@ class DatabaseUtil(
 
         val id_articulo1 = articuloRepository.insertarArticulo(Articulo(
             nombre = "Coca Cola",
-            stock = 10
+            stock = 10,
+            precio = 15.0f
         ))
         val id_articulo2 = articuloRepository.insertarArticulo(Articulo(
             nombre = "Pepsi",
-            stock = 10
+            stock = 10,
+            precio = 12.0f
         ))
 
         val id_articulo3 = articuloRepository.insertarArticulo(Articulo(
             nombre = "Sprite",
-            stock = 10
+            stock = 10,
+            precio = 30.0f
         ))
 
         val id_pedido1 = pedidoRepository.insertarPedido(Pedido(
@@ -58,6 +61,8 @@ class DatabaseUtil(
             direccion_tienda = "Av. Lima 123",
             fecha_entrega = "",
             comentario = "",
+            foto = null,
+            firma = null
         ))
 
         val id_pedido2 = pedidoRepository.insertarPedido(Pedido(
@@ -69,6 +74,8 @@ class DatabaseUtil(
             direccion_tienda = "Av. Lima 123",
             fecha_entrega = "",
             comentario = "",
+            foto = null,
+            firma = null
         ))
 
         val id_pedido3 = pedidoRepository.insertarPedido(Pedido(
@@ -80,6 +87,8 @@ class DatabaseUtil(
             direccion_tienda = "Av. Lima 123",
             fecha_entrega = "",
             comentario = "",
+            foto = null,
+            firma = null
         ))
 
         pedidoDetalleRepository.insertarPedidoDetalle(PedidoDetalle(

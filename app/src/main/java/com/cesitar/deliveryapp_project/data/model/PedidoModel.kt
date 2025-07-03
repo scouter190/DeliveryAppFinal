@@ -13,7 +13,10 @@ data class PedidoModel(
     val comentario: String?,
     val fecha_entrega: String?,
     val documento: String?,
-    var pedidoDetalle: List<PedidoDetalleModel>
+    val firma: String?,
+    val foto: String?,
+    var pedidoDetalle: List<PedidoDetalleModel>,
+    var usuario: UsuarioModel?
 ) {
     companion object {
         fun from(pedido: Pedido): PedidoModel {
@@ -27,7 +30,10 @@ data class PedidoModel(
                 comentario = pedido.comentario,
                 numero_guia = pedido.numero_guia,
                 documento = pedido.documento,
-                pedidoDetalle = emptyList()
+                firma = pedido.firma,
+                foto = pedido.foto,
+                pedidoDetalle = emptyList(),
+                usuario = null
             )
         }
     }

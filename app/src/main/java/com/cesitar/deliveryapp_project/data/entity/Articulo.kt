@@ -10,5 +10,6 @@ import androidx.room.PrimaryKey
 data class Articulo(
     @PrimaryKey(autoGenerate = true) val id_articulo: Int = 0,
     val nombre: String,
-    val stock: Int
+    val stock: Int,
+    val precio: Float
 )

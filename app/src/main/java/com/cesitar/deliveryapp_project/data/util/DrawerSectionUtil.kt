@@ -1,4 +1,6 @@
 package com.cesitar.deliveryapp_project.data.util
 
-class DrawerSectionUtil {
+sealed class DrawerSectionUtil {
+    object Pedido : DrawerSectionUtil()
+    object Main : DrawerSectionUtil()
 }

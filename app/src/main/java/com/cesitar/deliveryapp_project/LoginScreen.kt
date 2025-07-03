@@ -1,9 +1,5 @@
 package com.cesitar.deliveryapp_project
 
-import android.content.Intent
-import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -12,16 +8,16 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-@Composable
-fun LoginScreen() {
+import androidx.navigation.NavController
+import com.cesitar.deliveryapp_project.navigation.AppScreens
 
-    val context = LocalContext.current
+@Composable
+fun LoginScreen(navController: NavController) {
+
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -32,7 +28,7 @@ fun LoginScreen() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        // Logo at the top
+        // Logo
         Image(
             painter = painterResource(id = R.drawable.logo_app),
             contentDescription = "Logo",
@@ -41,7 +37,7 @@ fun LoginScreen() {
                 .padding(bottom = 32.dp)
         )
 
-        // Username TextField
+        // Username field
         OutlinedTextField(
             value = username,
             onValueChange = { username = it },
@@ -58,7 +54,7 @@ fun LoginScreen() {
             }
         )
 
-        // Password TextField
+        // Password field
         OutlinedTextField(
             value = password,
             onValueChange = { password = it },
@@ -76,11 +72,14 @@ fun LoginScreen() {
             }
         )
 
-        // Login Button
+        // Login button
         Button(
             onClick = {
-                val intent = Intent(context, HomeActivity::class.java)
-                context.startActivity(intent) },
+                // Aquí deberías validar el login
+                navController.navigate(AppScreens.HomeScreen.route) {
+                    popUpTo(AppScreens.LoginScreen.route) { inclusive = true }
+                }
+            },
             modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp),
@@ -96,10 +95,4 @@ fun LoginScreen() {
             )
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun LoginPreview(){
-    LoginScreen()
 }
