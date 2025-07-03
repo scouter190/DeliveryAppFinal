@@ -14,6 +14,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -67,7 +68,7 @@ fun DrawerScreen(
                 )
             }
         ) {
-            paddingValues ->
+                paddingValues ->
             Box(modifier = Modifier.padding(paddingValues)) {
                 when(currentSection){
                     is DrawerSectionUtil.Pedido -> PedidoScreen(

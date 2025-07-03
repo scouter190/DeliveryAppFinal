@@ -22,7 +22,7 @@ fun PedidoFotoModalComposable(
     val imageBitmap = base64ToImageBitmap(fotoBase64)
     AlertDialog(
         onDismissRequest = onClose,
-        title = { Text("Imagen Adjunta") },
+        title = { Text("Imagen Cargada Satisfactoriamente") },
         text = {
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
                 imageBitmap?.let {
